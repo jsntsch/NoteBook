@@ -26,7 +26,7 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse
 deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe
 deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe
 ```
-## 4. 安装ros
+## 4. 安装ROS
 ```
 sudo sh -c 'echo "deb http://mirrors.ustc.edu.cn/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
@@ -144,7 +144,7 @@ gedit ~/.bashrc
 export ROS_MASTER_URI=http://192.162.0.113:11311         
 export ROS_HOSTNAME=192.162.0.108
 ```
-## 4. 测试：（只要主机开启roscore即可）
+## 4. 测试:(只要主机开启roscore即可)
 测试主从机联通: 
 
     在主机上，ping从机：ping 192.162.0.108
@@ -153,7 +153,7 @@ export ROS_HOSTNAME=192.162.0.108
 
     主机上，新终端执行：roscore
     从机上，新终端执行：rostopic list
-# linux下非root用户获得/dev/ttyUSB×的读写权限
+# Linux下非root用户获得/dev/ttyUSB×的读写权限
 ```
 raspi@raspi:~$ sudo usermod -aG dialout [raspi]
 ```
