@@ -147,12 +147,12 @@ export ROS_HOSTNAME=192.162.0.108
 ## 4. 测试：（只要主机开启roscore即可）
 测试主从机联通: 
 
-    在主机上，ping从机：`ping 192.162.0.108`
-    在从机上，ping主机：`ping 192.162.0.113`
+    在主机上，ping从机：ping 192.162.0.108
+    在从机上，ping主机：ping 192.162.0.113
 测试ROS主从配置： 
 
-    主机上，新终端执行：`roscore` 
-    从机上，新终端执行：`rostopic list`
+    主机上，新终端执行：roscore
+    从机上，新终端执行：rostopic list
 # linux下非root用户获得/dev/ttyUSB×的读写权限
 ```
 raspi@raspi:~$ sudo usermod -aG dialout [raspi]
