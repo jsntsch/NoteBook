@@ -119,11 +119,11 @@ roslaunch cartographer_ros demo_backpack_2d.launch bag_filename:=${HOME}/Downloa
 ## 2. 从机配置（树莓派配置）
 将主机的IP添加到主机的 `/etc/hosts` 这个配置文件里
 ```
-sudo gedit /etc/hosts
+sudo vim /etc/hosts
 ```
 添加： `192.162.0.113  sch`（也就是打开文件后一般为第三行添加，在一行注释之前）
 ```
-vim ~/.bashrc
+sudo vim ~/.bashrc
 ```
 添加
 ```
@@ -162,4 +162,22 @@ raspi@raspi:~$ sudo usermod -aG dialout [raspi]
 reboot
 ```
 # linux下USB口重命名绑定
+remap the device serial port(ttyUSBX) to  rplidar
 
+rplidar usb connection as `/dev/rplidar` , check it using the command :  `ls -l /dev|grep ttyUSB`
+
+start copy rplidar.rules to  `/etc/udev/rules.d/`
+
+```
+sudo cp `rospack find rplidar_ros`/scripts/rplidar.rules  /etc/udev/rules.d
+```
+Restarting udev
+```
+sudo service udev reload
+sudo service udev restart
+echo "finish "
+```
+set the udev rule , make the device_port be fixed by rplidar
+```
+KERNEL=="ttyUSB*", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", MODE:="0777", SYMLINK+="rplidar"
+```
