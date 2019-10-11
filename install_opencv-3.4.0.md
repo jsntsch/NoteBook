@@ -40,3 +40,11 @@ cmake -D ENABLE_PRECOMPILED_HEADERS=OFF -D WITH_GSTREAMER=ON -D WITH_LIBV4L=ON -
 make -j2
 sudo make install
 ```
+## 6、链接动态库
+```
+sudo vim /etc/ld.so.conf.d/opencv.conf 
+```
+wrote  ` /usr/local/lib/ `  to  ` opencv.conf `  file
+```
+sudo ldconfig -v
+```
