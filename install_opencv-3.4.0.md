@@ -1,4 +1,4 @@
-# 1、安装依赖
+## 1、安装依赖
 ```
 sudo apt update
 sudo apt install -y build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
@@ -9,7 +9,7 @@ sudo apt install -y libv4l-dev v4l-utils qv4l2 v4l2ucp
 sudo apt install -y curl unzip
 sudo apt update
 ```
-# 2、下载源码
+## 2、下载源码
 ```
 mkdir -p ~/tools/
 cd ~/tools/
@@ -17,12 +17,12 @@ curl -L https://github.com/opencv/opencv/archive/3.4.0.zip -o opencv-3.4.0.zip
 unzip opencv-3.4.0.zip 
 cd opencv-3.4.0/
 ```
-# 3、下载其他模块
+## 3、下载contrib模块
 ```
 curl -L https://github.com/opencv/opencv_contrib/archive/3.4.0.zip -o opencv_contrib-3.4.0.zip
 unzip opencv_contrib-3.4.0.zip
 ```
-# 4、下载ippicv
+## 4、下载ippicv
 ```
 cd 3rdparty/ippicv/
 curl -L https://github.com/opencv/opencv_3rdparty/raw/ippicv/master_20170822/ippicv/ippicv_2017u3_lnx_intel64_general_20170822.tgz -o ippicv_2017u3_lnx_intel64_general_20170822.tgz
@@ -32,7 +32,7 @@ sudo vim ippicv.cmake
 ```
 cd ../../
 ```
-# 5、编译安装
+## 5、编译安装
 ```
 mkdir build
 cd build/
