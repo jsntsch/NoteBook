@@ -28,7 +28,11 @@
     %name = dev.get_info(realsense.camera_info.name);    
     % Get frames. We discard the first couple to allow
     % the camera time to settle
-   for i = 1:1:1000
+    pause(1)
+    save_img_cut = 'D:\D435\RGB\';
+    save_depth_img_cut = 'D:\D435\depth\';
+        
+  for i = 1:1:1000
         fs = pipe.wait_for_frames();    
         aligned_frames = align.process(fs);
         
@@ -47,38 +51,35 @@
         data = color.get_data();
         depth_img = permute(reshape(data',[3,color.get_width(),color.get_height()]),[3 2 1]);
         depth_img_cut = imcrop(depth_img, [160 0 1120 720]);
-        %for(y=0:color.get_height())
-         %   pixel_index=y*color.get_width();
-          %  for(x=0:color.get_width())
-          x=877;
-          y=123;
-          pixels_distance1=depth_scale*double(data(y*color.get_width()+x));
-           % end
-        %end
+
+        filename = [num2str(i,'%04d'),'.png'];
+        path1 = fullfile(save_img_cut,filename);
+        path2 = fullfile(save_depth_img_cut,filename);
         % Display depth image        
         subplot(2,1,1);
         imshow(depth_img_cut);
+        imwrite(depth_img_cut,path2,'png');
         % Display color image
         img = permute(reshape(img_stream.get_data',[3,img_stream.get_width(),img_stream.get_height()]),[3 2 1]);
         img_cut = imcrop(img, [160 0 1120 720]);
         subplot(2,1,2);
         imshow(img_cut);
-        
-        save_img_cut = 'C:\Users\user\Desktop\RGB\';
-        save_depth_img_cut = 'C:\Users\user\Desktop\shendutu\';
-        
-           filename = [num2str(i,'%04d'),'.png'];
-           path1 = fullfile(save_img_cut,filename);
-           path2 = fullfile(save_depth_img_cut,filename);
         imwrite(img_cut,path1,'png');
-        imwrite(depth_img_cut,path2,'png');
-       
+               
         key = waitforbuttonpress;
         if(key == 1)
             % Stop streaming
             pipe.stop(); 
             break;
         end
+        %for(y=0:color.get_height())
+         %   pixel_index=y*color.get_width();
+          %  for(x=0:color.get_width())
+          %x=877;
+          %y=123;
+          %pixels_distance1=depth_scale*double(data(y*color.get_width()+x));
+           % end
+        %end
  end
   
     
